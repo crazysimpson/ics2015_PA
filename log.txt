@@ -1,0 +1,4 @@
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[8] = "\$eax" at position 0 with len 4: $eax
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[8] = "\$eax" at position 0 with len 4: $eax
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[1] = "\+" at position 4 with len 1: +
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[17] = "[0-9]+" at position 5 with len 1: 1
