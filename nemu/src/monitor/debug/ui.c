@@ -93,6 +93,23 @@ static int cmd_p(char *args){
 	return 0;
 }
 
+static int cmd_w(char *args)
+{
+	bool result = false;
+	unsigned int addr = expr(args, &result);
+	WP *wp = new_wp();
+	wp->point = addr;
+	wp->content = swaddr_read((swaddr_t)addr, 4);
+	return 0;	
+}
+
+static int cmd_d(char* args){
+	bool result = false;
+	unsigned int addr = expr(args, &result);
+	delete_wp(addr);
+	return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -106,7 +123,9 @@ static struct {
 	{"si", "Executing next instruction", cmd_si},
 	{"info", "show executing statue", cmd_info},
 	{"x", "scan memory", cmd_x},
-	{"p", "print expr", cmd_p}
+	{"p", "print expr", cmd_p},
+	{"w", "set watchpoint", cmd_w},
+	{"d", "delete watchpoint", cmd_d}
 	/* TODO: Add more commands */
 
 };
