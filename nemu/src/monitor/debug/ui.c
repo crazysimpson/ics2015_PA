@@ -98,9 +98,10 @@ static int cmd_w(char *args)
 {
 	bool result = false;
 	unsigned int addr = expr(args, &result);
-	WP *wp = new_wp();
-	wp->point = addr;
-	wp->content = swaddr_read((swaddr_t)addr, 4);
+	printf("%d", addr);
+	//WP *wp = new_wp();
+	//wp->point = addr;
+	//wp->content = swaddr_read((swaddr_t)addr, 4);
 	return 0;	
 }
 
