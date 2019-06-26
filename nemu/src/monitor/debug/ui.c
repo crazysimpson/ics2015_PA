@@ -101,8 +101,8 @@ static int cmd_w(char *args)
 	printf("%d\n", addr);
 	WP *wp = new_wp();
 	printf("%d",(int) wp);
-	//wp->point = addr;
-	//wp->content = swaddr_read((swaddr_t)addr, 4);
+	wp->point = addr;
+	wp->content = swaddr_read((swaddr_t)addr, 4);
 	return 0;	
 }
 
