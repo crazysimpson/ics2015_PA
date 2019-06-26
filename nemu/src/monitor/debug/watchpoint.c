@@ -23,8 +23,8 @@ void init_wp_pool() {
 
 WP* new_wp(){
 	if((free_ + 1) != (wp_pool + NR_WP)){
-		free_++;
-		head++;
+		free_+=1;
+		head+=1;
 		return head;
 	}else{
 		Assert(0, "WP_POOL is not enough ");
@@ -40,10 +40,10 @@ void free_wp(WP* wp){
 		wp->content = wp->next->content;
 		wp->point = wp->next->point;
 	}
-	head--;
+	head-=1;
 	if(head<wp_pool)
 		head=NULL;
-	free_ --;
+	free_ -=1;
 }
 
 bool check_wp_pool(){
