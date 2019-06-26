@@ -1,1 +1,1 @@
-[nemu/src/monitor/debug/expr.c,99,make_token] match rules[7] = "0x[0-9a-fA-F]+" at position 0 with len 8: 0x100002
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[17] = "[0-9]+" at position 0 with len 5: 10002
