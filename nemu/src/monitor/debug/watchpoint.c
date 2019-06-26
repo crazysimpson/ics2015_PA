@@ -55,6 +55,7 @@ bool check_wp_pool(){
 	while(head !=NULL &&  point < head){
 		if(point->content != swaddr_read((swaddr_t)point->point, 4)){
 			printf("the content of addre %08x has changed, the origin vale is: %x08, the new value is: %08x\n",point->point, point->content, swaddr_read((swaddr_t)point->point, 4));
+			point->content  = swaddr_read((swaddr_t)point->point, 4);
 			result = true;
 		}
 		point = point->next;		
