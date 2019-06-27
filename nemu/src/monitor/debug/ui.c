@@ -101,10 +101,10 @@ static int cmd_p(char *args){
 static int cmd_w(char *args)
 {
 	bool result = false;
-	unsigned int addr = expr(args, &result);
+	//unsigned int addr = expr(args, &result);
 	WP *wp = new_wp();
 	strcpy(wp->expr, args);
-	wp->point = addr;
+	//wp->point = addr;
 	wp->content = expr(args, &result);  // swaddr_read((swaddr_t)addr, 4);
 	return 0;	
 }
