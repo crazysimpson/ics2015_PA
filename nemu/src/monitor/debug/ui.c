@@ -37,7 +37,11 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args){
-	int execute_num = atoi(args);
+	int execute_num = 0;
+	if(args == NULL)
+		execute_num = 1;
+	else
+		execute_num = atoi(args);
 	execute_num = execute_num<=0 ? 1 : execute_num;
 	cpu_exec(execute_num);
 	return 0;
