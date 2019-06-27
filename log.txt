@@ -1,9 +1,9 @@
-[nemu/src/monitor/debug/expr.c,99,make_token] match rules[7] = "0x[0-9a-fA-F]+" at position 0 with len 6: 0x1234
   100000:   b8 00 00 00 00                        movl $0x0,%eax
   100005:   bb 00 00 00 00                        movl $0x0,%ebx
   10000a:   b9 00 00 00 00                        movl $0x0,%ecx
   10000f:   ba 00 00 00 00                        movl $0x0,%edx
   100014:   b9 00 80 00 00                        movl $0x8000,%ecx
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[7] = "0x[0-9a-fA-F]+" at position 0 with len 6: 0x1234
   100019:   66 bb 00 00                           movw $0x0,%bx
   10001d:   b7 00                                 movb $0x0,%bh
   10001f:   c7 05 34 12 00 00 01 00 00 00         movl $0x1,0x1234
