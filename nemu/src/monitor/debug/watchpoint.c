@@ -22,12 +22,10 @@ void init_wp_pool() {
 /* TODO: Implement the functionality of watchpoint */
 
 WP* new_wp(){
-	if((free_ + 1) != (wp_pool + NR_WP)){
-		free_+=1;
-		if(head==NULL)
-			head = wp_pool;
-		else
-			head+=1;
+	if((free_) != (wp_pool + NR_WP)){
+			head = free_;
+		
+			free_+=1;
 		return head;
 	}else{
 		Assert(0, "WP_POOL is not enough ");
