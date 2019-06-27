@@ -103,15 +103,16 @@ static int cmd_w(char *args)
 	bool result = false;
 	unsigned int addr = expr(args, &result);
 	WP *wp = new_wp();
+	strcpy(wp->expr, args);
 	wp->point = addr;
-	wp->content = swaddr_read((swaddr_t)addr, 4);
+	wp->content = expr(args, &result);  // swaddr_read((swaddr_t)addr, 4);
 	return 0;	
 }
 
 static int cmd_d(char* args){
-	bool result = false;
-	unsigned int addr = expr(args, &result);
-	delete_wp(addr);
+	//bool result = false;
+	//unsigned int addr = expr(args, &result);
+	delete_wp(args);
 	return 0;
 }
 

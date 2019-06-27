@@ -6,7 +6,7 @@
 
 static WP wp_pool[NR_WP];
 static WP *head, *free_;
-
+static bool expr_result;
 void init_wp_pool() {
 	int i;
 	for(i = 0; i < NR_WP; i ++) {
@@ -38,6 +38,7 @@ void free_wp(WP* wp){
 	}
 	while(head !=NULL && wp!=head){
 		wp->NO = wp->next->NO;
+		strcpy(wp->expr, wp->next->expr);
 		wp->content = wp->next->content;
 		wp->point = wp->next->point;
 	}
@@ -51,9 +52,9 @@ bool check_wp_pool(){
 	bool result = false;
 	WP* point = wp_pool;
 	while(head !=NULL &&  point <= head){
-		if(point->content != swaddr_read((swaddr_t)point->point, 4)){
-			printf("the content of addre %08x has changed, the origin vale is: %08x, the new value is: %08x\n",point->point, point->content, swaddr_read((swaddr_t)point->point, 4));
-			point->content  = swaddr_read((swaddr_t)point->point, 4);
+		if(point->content != expr(point->expr, &expr_result)){
+			printf("the content of expr %s has changed, the origin vale is: %08x, the new value is: %08x\n",point->expr, point->content, expr(point->expr, &expr_result));
+			point->content  = expr(point->expr, &expr_result);
 			result = true;
 		}
 		point = point->next;		
@@ -62,10 +63,10 @@ bool check_wp_pool(){
 	return result;
 }
 
-void delete_wp(unsigned addr){
+void delete_wp(char *args){
 	WP* point = wp_pool;
 	while(head!=NULL && point<=head){
-		if(point->point == addr){
+		if(strcmp(args, point->expr)==0){
 			free_wp(point);
 			continue;
 		}
@@ -79,7 +80,7 @@ void delete_wp(unsigned addr){
 void print_wp(){
 	WP *tmp = wp_pool;
 	while(tmp<=head){
-		printf("watchpoint: %08x,  content: %08x,  current_value: %08x\n", tmp->point, tmp->content, swaddr_read((swaddr_t)tmp->point, 4));
+		printf("watchpoint: %s,  content: %08x,  current_value: %08x\n", tmp->expr, tmp->content, expr(tmp->expr, &expr_result));
 		tmp = tmp->next;
 	}	
 }
