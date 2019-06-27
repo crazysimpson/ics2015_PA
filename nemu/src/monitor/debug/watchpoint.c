@@ -50,7 +50,7 @@ void free_wp(WP* wp){
 bool check_wp_pool(){
 	bool result = false;
 	WP* point = wp_pool;
-	while(head !=NULL &&  point < head){
+	while(head !=NULL &&  point <= head){
 		if(point->content != swaddr_read((swaddr_t)point->point, 4)){
 			printf("the content of addre %08x has changed, the origin vale is: %x08, the new value is: %08x\n",point->point, point->content, swaddr_read((swaddr_t)point->point, 4));
 			point->content  = swaddr_read((swaddr_t)point->point, 4);
@@ -64,7 +64,7 @@ bool check_wp_pool(){
 
 void delete_wp(unsigned addr){
 	WP* point = wp_pool;
-	while(head!=NULL && point<head){
+	while(head!=NULL && point<=head){
 		if(point->point == addr){
 			free_wp(point);
 			continue;

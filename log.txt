@@ -1,0 +1,1 @@
+[nemu/src/monitor/debug/expr.c,99,make_token] match rules[7] = "0x[0-9a-fA-F]+" at position 0 with len 6: 0x1234
