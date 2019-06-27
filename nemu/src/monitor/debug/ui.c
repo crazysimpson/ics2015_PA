@@ -57,7 +57,7 @@ static int cmd_info(char *args){
 		printf("esp: 0x%08x \n", cpu.esp);
 	}
 	if(*args == 'w'){
-		
+		print_wp();
 	}
 	return 0;
 }
