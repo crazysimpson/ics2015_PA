@@ -40,7 +40,6 @@ void free_wp(WP* wp){
 		wp->NO = wp->next->NO;
 		strcpy(wp->expr, wp->next->expr);
 		wp->content = wp->next->content;
-		wp->point = wp->next->point;
 	}
 	head-=1;
 	if(head<wp_pool)

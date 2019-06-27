@@ -6,7 +6,6 @@
 typedef struct watchpoint {
 	int NO;
 	unsigned int content;
-	unsigned int point;
 	char expr[32];
 	struct watchpoint *next;
 	

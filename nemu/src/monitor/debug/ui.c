@@ -78,7 +78,6 @@ static int cmd_x(char *args){
 	}
 	int n = atoi(arg1);
 	int addr =0 ;
-	//addr = (int)strtol(arg2,NULL,16);
 	addr = expr(arg2, &result);
 	int i=0;
 	for(i=0; i<n;i++){
@@ -101,17 +100,13 @@ static int cmd_p(char *args){
 static int cmd_w(char *args)
 {
 	bool result = false;
-	//unsigned int addr = expr(args, &result);
 	WP *wp = new_wp();
 	strcpy(wp->expr, args);
-	//wp->point = addr;
 	wp->content = expr(args, &result);  // swaddr_read((swaddr_t)addr, 4);
 	return 0;	
 }
 
 static int cmd_d(char* args){
-	//bool result = false;
-	//unsigned int addr = expr(args, &result);
 	delete_wp(args);
 	return 0;
 }
