@@ -78,7 +78,7 @@ void delete_wp(unsigned addr){
 
 void print_wp(){
 	WP *tmp = wp_pool;
-	while(tmp<head){
+	while(tmp<=head){
 		printf("watchpoint: %08x,  content: %08x,  current_value: %08x\n", tmp->point, tmp->content, swaddr_read((swaddr_t)tmp->point, 4));
 		tmp = tmp->next;
 	}	
